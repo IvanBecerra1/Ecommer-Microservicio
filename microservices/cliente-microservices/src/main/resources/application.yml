@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: cliente-microservices
+  config:
+    import: "optional:configserver:http://localhost:8888"
+#"  data:
+#    mongodb:
+#      host: localhost
+#      port: 27017
+#      database: clientes_db
+#      username: root
+#      password: pass
+#      authentication-database: admin
+
+
+#server:
+#  port: 8091
+#"

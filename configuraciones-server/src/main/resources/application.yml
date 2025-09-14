@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: configuraciones.
+  profiles:
+    active: native #quiere decir que no vamos a usar Git para configuracion
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config #Path , carpeta de configuracion de los diferentes microservicios
+
+server:
+  port: 8888 #puerto por defecto

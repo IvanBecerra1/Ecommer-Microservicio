@@ -1,0 +1,10 @@
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: localhost #En entorno de producion deber modificarlo al apropiado
+  client:
+    register-with-eureka: false # El servicio no se va registrar en eureka como cliente
+    fetch-registry: false # El cliente no va descargar el registro en eureka.
+    service-url: # La url del servicio
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
