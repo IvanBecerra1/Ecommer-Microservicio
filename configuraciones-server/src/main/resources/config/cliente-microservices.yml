@@ -7,7 +7,5 @@ spring:
       username: root
       password: pass
       authentication-database: admin
-
-
 server:
   port: 8091

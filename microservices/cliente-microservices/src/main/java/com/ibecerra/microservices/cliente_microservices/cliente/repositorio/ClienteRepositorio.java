@@ -1,6 +1,6 @@
-package cliente.repositorio;
+package com.ibecerra.microservices.cliente_microservices.cliente.repositorio;
 
-import cliente.modelo.Cliente;
+import com.ibecerra.microservices.cliente_microservices.cliente.modelo.Cliente;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

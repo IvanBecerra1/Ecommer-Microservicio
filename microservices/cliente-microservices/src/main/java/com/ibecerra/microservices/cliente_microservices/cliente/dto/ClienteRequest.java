@@ -1,4 +1,4 @@
-package cliente.dto;
+package com.ibecerra.microservices.cliente_microservices.cliente.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;

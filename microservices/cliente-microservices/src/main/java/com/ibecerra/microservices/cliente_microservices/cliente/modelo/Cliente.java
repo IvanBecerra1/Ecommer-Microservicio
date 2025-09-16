@@ -1,4 +1,4 @@
-package cliente.modelo;
+package com.ibecerra.microservices.cliente_microservices.cliente.modelo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
