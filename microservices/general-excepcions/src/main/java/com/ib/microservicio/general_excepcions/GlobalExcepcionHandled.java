@@ -10,9 +10,12 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Component // para la inyeccion de dependencia y sea reconocida como componente
 @RestControllerAdvice // se utiliza para manejar las excepciones
 // de nuestras apis rest 
+@Slf4j // aplicamos el loggers
 public class GlobalExcepcionHandled {
  
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -25,6 +28,7 @@ public class GlobalExcepcionHandled {
             errores.put(titulo, mensaje);
         });
 
+        log.warn("Validaciones errores: {}", exception.toString());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse(errores));
     }
 
@@ -37,6 +41,7 @@ public class GlobalExcepcionHandled {
 
         errors.put(titulo, errorMensaje);
 
+        log.error("error: {}", exception.toString());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ErrorResponse(errors));
     }
 }

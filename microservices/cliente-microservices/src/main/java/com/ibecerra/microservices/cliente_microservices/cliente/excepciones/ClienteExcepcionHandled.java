@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import com.ib.microservicio.general_excepcions.ErrorResponse;
 import com.ib.microservicio.general_excepcions.GlobalExcepcionHandled;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestControllerAdvice
 @Primary // hace que primero se ejecute este y despues el otro global
+@Slf4j
 public class ClienteExcepcionHandled extends GlobalExcepcionHandled {
     
     @ExceptionHandler(ClienteNoEncontradoException.class)
@@ -22,6 +25,7 @@ public class ClienteExcepcionHandled extends GlobalExcepcionHandled {
         String titulo = "cliente";
         errores.put(titulo, exception.getMessage());
         
+        log.warn("Error cliente", exception.toString());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse(errores));
     }
 }
