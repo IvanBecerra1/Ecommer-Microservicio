@@ -19,6 +19,7 @@
 
     <!-- Agregamos a los hijos  !-->
     <modules>
+        <module>general-excepcions</module>
         <module>cliente-microservices</module>
     </modules>
 

@@ -1,20 +1,24 @@
 package com.ibecerra.microservices.cliente_microservices.cliente.controlador;
 
 
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.ibecerra.microservices.cliente_microservices.cliente.dto.ClienteRequest;
 import com.ibecerra.microservices.cliente_microservices.cliente.dto.ClienteResponse;
 import com.ibecerra.microservices.cliente_microservices.cliente.servicio.ClienteServicio;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-
-import java.util.List;
-
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.annotation.RequestScope;
-
-import com.ibecerra.microservices.cliente_microservices.cliente.modelo.Cliente;
 
 @RestController
 @RequestMapping("/cliente")
@@ -25,7 +29,7 @@ public class ClienteControlador {
 
 
     @PostMapping("")
-    public ResponseEntity<String> registrarCliente(@RequestBody @Valid ClienteRequest clienteRequest){
+    public ResponseEntity<String> registrarCliente(@Valid @RequestBody  ClienteRequest clienteRequest){
         String id = this.clienteServicio.crearCliente(clienteRequest);
 
         return ResponseEntity.ok(id);

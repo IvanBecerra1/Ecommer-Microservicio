@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.ibecerra.microservices.cliente_microservices.cliente.dto.ClienteRequest;
 import com.ibecerra.microservices.cliente_microservices.cliente.dto.ClienteResponse;
+import com.ibecerra.microservices.cliente_microservices.cliente.excepciones.ClienteNoEncontradoException;
 import com.ibecerra.microservices.cliente_microservices.cliente.mapper.ClienteMapper;
 import com.ibecerra.microservices.cliente_microservices.cliente.modelo.Cliente;
 import com.ibecerra.microservices.cliente_microservices.cliente.repositorio.ClienteRepositorio;
@@ -37,7 +38,10 @@ public class ClienteServicio {
     }
     public ClienteResponse buscarCliente(String id){
         return this.clienteRepositorio.findById(id)
-                    .map(clienteMapper::toClienteResponse).orElseThrow();
+                    .map(clienteMapper::toClienteResponse)
+                    .orElseThrow( () -> 
+                        new ClienteNoEncontradoException(String.format("Cliente no encontrado, id: %s", id))
+                    );
     }
 
     public List<ClienteResponse> listaCliente(){
@@ -50,10 +54,10 @@ public class ClienteServicio {
 
     public void eliminarCliente(String id){
         this.clienteRepositorio.findById(id)
-            .orElseThrow();
+            .orElseThrow(()->
+                new ClienteNoEncontradoException(String.format("Cliente no encontrado", id))
+            );
 
         this.clienteRepositorio.deleteById(id);
-
-
     }
 }
